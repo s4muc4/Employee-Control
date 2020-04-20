@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+
+    <style>
+        table,
+        
+        th {
+            border: 1px solid black;
+
+            background-color: #4CAF50;
+            color: black;
+
+        }
+        td {
+            border-collapse: collapse;
+
+            background-color: white;
+            color: black;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Cadastro de Funcionários</h1>
+    <a href="/">Menu</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarFuncionario}" method="POST">
+        <label>Nome:</label><input type="text" name="nome" />
+        <label>Endereco:</label><input type="text" name="endereco" />
+        <label>CPF:</label><input type="text" name="cpf" />
+        <label>DataInicio:</label><input type="text" name="dataInicio" />
+        <label>Setor:</label><input type="text" name="setor" />
+        <input type="submit" value="Salvar" />
+    </form>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Cadastro</td>
+            <th>Nome</td>
+            <th>Idade</td>
+            <th>CPF</td>
+            <th>DataInicio</td>
+            <th>Setor</td>
+        </tr>
+
+        <tr th:each="funcionario : ${funcionarios}">
+            <td th:text="${funcionario?.cadastro}"></td>
+            <td th:text="${funcionario?.nome}"></td>
+            <td th:text="${funcionario?.endereco}"></td>
+            <td th:text="${funcionario?.cpf}"></td>
+            <td th:text="${funcionario?.dataInicio}"></td>
+            <td th:text="${funcionario?.setor}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
